@@ -1,6 +1,6 @@
 ####{BSB GENERATED: NO EDIT
 B lib/bs
-FLG -open AtlasClient2
+FLG -open AtlasClient
 FLG -ppx /home/luke/Projects/atlas-client/node_modules/bs-platform/lib/bsppx.exe
 S /home/luke/Projects/atlas-client/node_modules/bs-platform/lib/ocaml
 B /home/luke/Projects/atlas-client/node_modules/bs-platform/lib/ocaml
