@@ -1,1 +1,1 @@
-export { createAtlasClient } from './Client.bs';
+export { createClient } from './Client.bs';
