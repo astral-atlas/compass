@@ -1,1 +1,1 @@
-atlas-client
+# Atlas Compass
