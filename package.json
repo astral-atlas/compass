@@ -5,9 +5,6 @@
   "repository": "https://github.com/lukekaalim/atlas-client.git",
   "author": "Luke Kaalim <lukekaalim@gmail.com>",
   "license": "MIT",
-  "scripts": {
-    "dev": "stmux -f .stmux.conf -M"
-  },
   "devDependencies": {
     "bs-platform": "^5.0.4",
     "flow-bin": "^0.100.0",
@@ -15,7 +12,6 @@
     "rollup-plugin-flow-entry": "^0.3.1",
     "rollup-plugin-node-resolve": "^5.0.1",
     "rollup-plugin-terser": "^5.0.0",
-    "stmux": "^1.6.1",
     "tap": "^14.2.0"
   }
 }

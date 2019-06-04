@@ -10,9 +10,7 @@
         "**/.DS_Store": true,
         ".nyc_output": true,
         "coverage": true,
-        "dist": true,
         "lib": true,
-        ".merlin": true,
-        "src/*.bs.js": true
+        ".merlin": true
     }
 }
