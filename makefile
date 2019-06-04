@@ -1,7 +1,9 @@
-javascript-files := $(wildcard src/*.js)
+javascript-files := $(shell find src -name "*.js" -not -name "*.bs.js")
+reasonml-files := $(wildcard src/*.re)
+bucklescript-generated-files := $(patsubst %.re, %.bs.js, $(reasonml-files))
 
-dist/atlas-client.cjs.js dist/atlas-client.umd.js dist/atlas-client.esm.js: yarn.lock $(javascript-files) rollup.config.js
+dist/atlas-client.cjs.js dist/atlas-client.umd.js dist/atlas-client.esm.js: yarn.lock $(javascript-files) $(bucklescript-generated-files) rollup.config.js
 	node_modules/.bin/rollup -c
 
-%.bs.js: %.re
+$(bucklescript-generated-files): $(reasonml-files)
 	node_modules/.bin/bsb
