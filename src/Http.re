@@ -5,8 +5,9 @@ type method =
 type header = (string, string);
 
 type domain = string;
-type path = sting;
+type path = string;
 
+[@bs.deriving abstract]
 type url = {
   domain: domain,
   path: path,
