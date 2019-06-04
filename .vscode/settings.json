@@ -1,5 +1,19 @@
 {
     "editor.tabSize": 2,
     "javascript.validate.enable": false,
-    "typescript.validate.enable": false
+    "typescript.validate.enable": false,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        ".nyc_output": true,
+        "node_modules": true,
+        "coverage": true,
+        "dist": true,
+        "lib": true,
+        ".merlin": true,
+        "src/*.bs.js": true
+    }
 }
