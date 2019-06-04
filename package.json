@@ -13,5 +13,8 @@
     "rollup-plugin-node-resolve": "^5.0.1",
     "rollup-plugin-terser": "^5.0.0",
     "tap": "^14.2.0"
+  },
+  "dependencies": {
+    "@glennsl/bs-json": "^4.0.0"
   }
 }
