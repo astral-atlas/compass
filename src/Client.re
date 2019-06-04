@@ -1,3 +1,6 @@
+open Belt.Result;
+open Belt.Array;
+
 [@bs.deriving abstract]
 type t = {
   getUsers: unit => Js.Promise.t(array(User.t)),
@@ -28,7 +31,7 @@ let toArray = (toElement, json) => {
 
 let toUserArray = toArray(element =>
   switch (Js.Json.classify(element)) {
-    | Js.Json.JSONObject(dict) => Users.toUser(dict);
+    | Js.Json.JSONObject(dict) => User.userOfJSON(dict);
     | _ => Error("Element was not an object");
   }
 );
@@ -37,7 +40,7 @@ let createClient = (
   domain: Http.domain,
   httpRequest: Http.request,
 ) => {
-  let getUsersUrl = url(~domain, ~path=getUsersPath, ~query=[||], ~fragment="");
+  let getUsersUrl = Http.url(~domain, ~path=getUsersPath, ~query=[||], ~fragment="");
   let getUsers = () => Js.Promise.resolve([||]);
   t(~getUsers);
 };
