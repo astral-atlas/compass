@@ -1,8 +1,8 @@
-import { test } from 'tap';
-import { ok } from 'assert';
+// @flow
+import { createTest, createTestSuite, equal } from 'lk-test';
 import { createClient } from './Client.bs';
 
-test('createClient()', async () => {
+const getUsersTest = createTest('getUsersTest', async () => {
   const exampleDomain = 'example.com';
 
   const luke = { id: '1', name: 'luke' };
@@ -18,5 +18,16 @@ test('createClient()', async () => {
     }
   };
   const client = createClient(exampleDomain, mockRequester);
-  const users = await client.getUsers();
+  const [users] = await client.getUsers();
+  return [
+    equal(users[0].name, 'luke'),
+    equal(users[1].name, 'ben'),
+    equal(users[2].name, 'r2-d2'),
+  ];
 });
+
+const clientTestSuite = createTestSuite([getUsersTest], 'src/Client.test.js');
+
+export {
+  clientTestSuite,
+};
