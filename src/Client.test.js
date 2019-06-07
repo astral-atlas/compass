@@ -12,7 +12,7 @@ const getUsersTest = createTest('getUsersTest', async () => {
   const ben = { id: '2', name: 'ben' };
   const artoo = { id: '3', name: 'r2-d2' };
 
-  const mockRequester = async (domain, path) => {
+  const mockRequester = async (domain, path, headers) => {
     switch (path) {
       case '/users':
         return JSON.stringify([luke, ben, artoo]);
