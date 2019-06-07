@@ -12,4 +12,4 @@ type url = {
   path: path,
 };
 
-type requester = (~domain: string, ~path: string) => Js.Promise.t(string);
+type requester = (~domain: string, ~path: string, ~headers: array(header)) => Js.Promise.t(string);

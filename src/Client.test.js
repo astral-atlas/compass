@@ -1,6 +1,9 @@
 // @flow
 import { createTest, createTestSuite, equal } from 'lk-test';
 import { createClient } from './Client.bs';
+import { createBasicAuth } from './Authentication.bs';
+
+const identity = a => a;
 
 const getUsersTest = createTest('getUsersTest', async () => {
   const exampleDomain = 'example.com';
@@ -17,7 +20,7 @@ const getUsersTest = createTest('getUsersTest', async () => {
         throw new Error(`Unexpected Route: ${path}`);
     }
   };
-  const client = createClient(exampleDomain, mockRequester);
+  const client = createClient(exampleDomain, mockRequester, identity, createBasicAuth('luke', '1234'));
   const [users] = await client.getUsers();
   return [
     equal(users[0].name, 'luke'),
