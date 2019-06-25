@@ -1,5 +1,3 @@
-import resolve from 'rollup-plugin-node-resolve';
-
 const rollupConfig = {
   input: 'src/index.js',
   output: [
@@ -7,7 +5,7 @@ const rollupConfig = {
     { format: 'umd', file: 'dist/atlas-client.umd.js', name: 'ATLAS_CLIENT' },
     { format: 'esm', file: 'dist/atlas-client.esm.js' },
   ],
-  plugins: [resolve()],
+  plugins: [],
 };
 
 export default rollupConfig;
