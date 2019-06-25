@@ -6,7 +6,9 @@
   "author": "Luke Kaalim <lukekaalim@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@astral-atlas/topograph": "^1.3.1",
     "esm": "^3.2.25",
+    "lk-contract": "^1.1.1",
     "lk-test": "^2.2.0",
     "rollup": "^1.13.1"
   }
