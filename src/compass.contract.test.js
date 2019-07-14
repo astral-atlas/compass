@@ -1,5 +1,5 @@
 // @flow
-import { getUsersContract } from '@astral-atlas/topograph';
+import { contracts } from '@astral-atlas/topograph';
 import { createMockServer } from 'lk-contract';
 import { createTest, colorfulReporter, ok } from 'lk-test';
 import { request } from 'http';
@@ -18,8 +18,8 @@ const succeed = success => ({
   success,
 });
 
-const contractTest = createTest(getUsersContract.name, async () => {
-  const server = await createMockServer(getUsersContract);
+const contractTest = createTest("getChapersContract", async () => {
+  const server = await createMockServer(contracts.getUsersContract);
   try {
     const compass = createCompass(`http://127.0.0.1:${server.port}`, createRequesterFromNodeHttp(request), succeed, auth);
   
