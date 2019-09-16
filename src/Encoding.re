@@ -1,1 +1,0 @@
-type base64Encoder = string => string;
