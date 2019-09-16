@@ -7,9 +7,25 @@
   "license": "MIT",
   "devDependencies": {
     "@astral-atlas/topograph": "astral-atlas/topograph#v2.0.1",
+    "@lukekaalim/test": "^5.0.0",
     "esm": "^3.2.25",
     "lk-contract": "^1.1.1",
     "lk-test": "^2.2.0",
-    "rollup": "^1.13.1"
+    "rollup": "^1.13.1",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-flow-entry": "^0.3.1",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.1.2"
+  },
+  "scripts": {
+    "preversion": "npm test",
+    "postversion": "git push --follow-tags",
+    "test": "node -r esm test",
+    "prepublish": "rollup -c"
+  },
+  "dependencies": {
+    "@astral-atlas/contour": "^1.1.0",
+    "@lukekaalim/model": "^2.0.0",
+    "@lukekaalim/result": "^1.1.1"
   }
 }
