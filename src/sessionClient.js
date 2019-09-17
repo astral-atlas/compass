@@ -23,7 +23,8 @@ type SessionFailure = RequestFailure | ResponseFailure | ParseFailure;
 
 
 export type SessionClient = {
-  getSessions: () => Promise<Result<Array<Session>, SessionFailure>>
+  getSessions: () => Promise<Result<Array<Session>, SessionFailure>>,
+  createSession: (title: string, startTime: number) => Promise<Result<Session, SessionFailure>>
 };
 */
 
@@ -44,8 +45,20 @@ export const createSessionClient = (
       return fail({ type: 'parse-failure', failure: sessionsResult.failure });
     return succeed(sessionsResult.success);
   };
+  const createSession = async (title, startTime) => {
+    const responseResult = await client.request(new URL('/sessions', host).href, [], 'POST', JSON.stringify({ title, startTime }));
+    if (responseResult.type === 'failure')
+      return fail({ type: 'request-failure' });
+    if (responseResult.success.status !== 200)
+      return fail({ type: 'response-failure' });
+    const sessionsResult = sessionModel.from(JSON.parse(responseResult.success.body));
+    if (sessionsResult.type === 'failure')
+      return fail({ type: 'parse-failure', failure: sessionsResult.failure });
+    return succeed(sessionsResult.success);
+  }
 
   return {
     getSessions,
+    createSession,
   };
 };
