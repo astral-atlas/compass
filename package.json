@@ -1,6 +1,6 @@
 {
   "name": "@astral-atlas/compass",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "main": "dist/compass.cjs.js",
   "module": "dist/compass.esm.js",
   "repository": "https://github.com/lukekaalim/atlas-client.git",
