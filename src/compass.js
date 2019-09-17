@@ -5,7 +5,7 @@ import { createSessionClient } from './sessionClient';
 import type { HTTPClient } from '@lukekaalim/http-client';
 import type { SessionClient } from './sessionClient';
 
-type Compass = {
+export type Compass = {
   session: SessionClient,
 };
 */
