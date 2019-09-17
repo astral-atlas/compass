@@ -4,7 +4,7 @@ const commonjs = require('rollup-plugin-commonjs');
 const { terser } = require('rollup-plugin-terser');
 
 const rollupConfig = {
-  input: 'src/index.js',
+  input: 'src/compass.js',
   output: [
     { format: 'cjs', file: 'dist/compass.cjs.js' },
     { format: 'umd', file: 'dist/compass.umd.js', name: 'ATLAS_CLIENT' },

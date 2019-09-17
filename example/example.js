@@ -1,5 +1,5 @@
 // @flow strict
-const { createCompass } = require('./../');
+const { createCompass } = require('..');
 const { createHTTPClientFromNodeHttpsRequest } = require('@lukekaalim/http-client');
 const { request } = require('http');
 
