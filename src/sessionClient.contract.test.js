@@ -44,9 +44,25 @@ const expectPostSessionContract = (topographPath) => expect(async () => {
   return assert('createSession should return a success the created session', sessionResult.type === 'success');
 });
 
+const expectDeleteSessionContract = (topographPath) => expect(async () => {
+  const contractFile = await readFile(join(topographPath, 'session', 'deleteSession.json'), 'utf-8');
+  const contract = resultOrThrow(contractModel.from(JSON.parse(contractFile)));
+  const httpClient = createHTTPClientFromNodeHttpsRequest(request);
+
+  const contractServerResult = await withContractServer(contract, async host => {
+    const sessionClient = createSessionClient(host, httpClient);
+    return await sessionClient.deleteSession('123');
+  });
+  if (contractServerResult.type === 'failure')
+    return assert('Session did not pass contract', false);
+  const sessionResult = await contractServerResult.success;
+  return assert('deleteSession should return null after deleting the session', sessionResult.type === 'success');
+});
+
 const expectSessionContract = (topographPath/*: string*/) => expectAll('Sesssion Contract should allow the listing, adding, and deleting of Sessions', [
   expectGetSessionsContract(topographPath),
   expectPostSessionContract(topographPath),
+  expectDeleteSessionContract(topographPath),
 ]);
 
 module.exports = {
