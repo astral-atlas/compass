@@ -21,10 +21,10 @@ type ParseFailure = {
 }
 type SessionFailure = RequestFailure | ResponseFailure | ParseFailure;
 
-
 export type SessionClient = {
   getSessions: () => Promise<Result<Array<Session>, SessionFailure>>,
-  createSession: (title: string, startTime: number) => Promise<Result<Session, SessionFailure>>
+  createSession: (title: string, startTime: number) => Promise<Result<Session, SessionFailure>>,
+  deleteSession: (id: string) => Promise<Result<null, SessionFailure>>,
 };
 */
 
@@ -56,9 +56,20 @@ export const createSessionClient = (
       return fail({ type: 'parse-failure', failure: sessionsResult.failure });
     return succeed(sessionsResult.success);
   }
+  const deleteSession = async (id) => {
+    const url = new URL('/sessions', host);
+    url.searchParams.set('id', id)
+    const responseResult = await client.request(url.href, [], 'DELETE');
+    if (responseResult.type === 'failure')
+      return fail({ type: 'request-failure' });
+    if (responseResult.success.status !== 200)
+      return fail({ type: 'response-failure' });
+    return succeed(null);
+  }
 
   return {
     getSessions,
     createSession,
+    deleteSession
   };
 };
