@@ -24,8 +24,9 @@
     "prepublishOnly": "rollup -c"
   },
   "dependencies": {
-    "@astral-atlas/contour": "^1.1.0",
+    "@astral-atlas/contour": "^1.2.0",
     "@lukekaalim/model": "^2.0.0",
-    "@lukekaalim/result": "^1.1.1"
+    "@lukekaalim/result": "^1.1.1",
+    "immutable": "^4.0.0-rc.12"
   }
 }
